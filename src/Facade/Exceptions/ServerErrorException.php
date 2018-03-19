@@ -18,10 +18,7 @@ use Throwable;
  * Class ServerErrorException
  * @package Facade\Exceptions
  */
-final class ServerErrorException extends RuntimeException
+final class ServerErrorException extends \RuntimeException
 {
-    public function __construct($message = "", $code = 0, Throwable $previous = null)
-    {
-        parent::__construct($message, $code, $previous);
-    }
+
 }

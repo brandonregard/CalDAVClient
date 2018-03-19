@@ -143,7 +143,7 @@ final class CalDavClient implements ICalDavClient
                 case 403:
                     throw new ForbiddenException();
                 default:
-                    throw new ServerErrorException($ex->getMessage(), $ex->getCode());
+                    throw new ServerErrorException();
                     break;
             }
         }
@@ -313,7 +313,7 @@ final class CalDavClient implements ICalDavClient
      * @param string $etag
      * @return EventUpdatedResponse
      */
-    public function updateEvent($calendar_url, EventRequestVO $vo, $etag = null)
+    public function updateEvent($calendar_url, EventRequestVO $vo, $etag)
     {
         $uid           = $vo->getUID();
         $resource_url  = $calendar_url.$uid.self::SchedulingInformationSuffix;
@@ -342,7 +342,7 @@ final class CalDavClient implements ICalDavClient
      * @param string $etag
      * @return EventDeletedResponse
      */
-    public function deleteEvent($calendar_url, $uid, $etag = null)
+    public function deleteEvent($calendar_url, $uid, $etag)
     {
         $http_response = $this->makeRequest(
             RequestFactory::createDeleteRequest
@@ -438,7 +438,7 @@ final class CalDavClient implements ICalDavClient
 
         return new CalendarDeletedResponse
         (
-            $this->server_url, (string)$http_response->getBody(), $http_response->getStatusCode()
+            (string)$http_response->getBody(), $http_response->getStatusCode()
         );
     }
 }
