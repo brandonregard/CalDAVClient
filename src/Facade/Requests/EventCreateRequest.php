@@ -66,7 +66,8 @@ class EventCreateRequest implements IAbstractWebDAVRequest
                 ->setUseTimezone(true);
         }
 
-        if(!empty($this->vo->getLocationTitle())){
+        $title = $this->vo->getLocationTitle();
+        if(!empty($title)){
             $geo = sprintf("%s;%s", $this->vo->getLocationLat(), $this->vo->getLocationLng());
             $event->setLocation($this->vo->getLocationTitle(), $this->vo->getLocationTitle(), $geo);
         }

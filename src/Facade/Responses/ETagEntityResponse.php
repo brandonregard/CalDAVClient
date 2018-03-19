@@ -30,6 +30,12 @@ class ETagEntityResponse extends GenericSinglePROPFINDCalDAVResponse
      */
     public function getStatus()
     {
-        return isset($this->content['response']['status']) ? $this->content['response']['status'] : null;
+        if(isset($this->content['response']['propstat']['status'])) {
+            return $this->content['response']['propstat']['status'];
+        } elseif(isset($this->content['response']['status'])) {
+            return $this->content['response']['status'];
+        } else {
+            return null;
+        }
     }
 }

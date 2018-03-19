@@ -69,7 +69,8 @@ final class CalendarCreateRequest implements IAbstractWebDAVRequest
             )
         ];
 
-        if(!empty($this->vo->getDescription()))
+        $description = $this->vo->getDescription();
+        if(!empty($description))
             $props['{urn:ietf:params:xml:ns:caldav}calendar-description'] = $this->vo->getDescription();
 
         return $service->write('{urn:ietf:params:xml:ns:caldav}mkcalendar',

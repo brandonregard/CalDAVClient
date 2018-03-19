@@ -111,7 +111,7 @@ interface ICalDavClient
      * @param string $etag
      * @return EventUpdatedResponse
      */
-    public function updateEvent($calendar_url, EventRequestVO $vo, $etag = null);
+    public function updateEvent($calendar_url, EventRequestVO $vo, $etag);
 
     /**
      * @param string $calendar_url
@@ -119,7 +119,7 @@ interface ICalDavClient
      * @param string $etag
      * @return EventDeletedResponse
      */
-    public function deleteEvent($calendar_url, $uid, $etag = null);
+    public function deleteEvent($calendar_url, $uid, $etag);
 
     /**
      * @param string $event_url
